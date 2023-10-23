@@ -27,12 +27,12 @@
             - name: Intialize Terraform 
               run: |
                 terraform init
-            # - name: Terraform plan
-            #   if: github.event_name != 'pull_srequest'
-            #   run: |   
-            #     terraform plan
-            # - name: Terraform apply
-            #   if: github.event_name == 'push'
-            #   run: |
-            #     terraform apply -auto-approve
+            - name: Terraform plan
+              if: github.event_name != 'push'
+              run: |   
+                terraform plan
+            - name: Terraform apply
+              if: github.event_name == 'push'
+              run: |
+                terraform apply -auto-approve
                  
