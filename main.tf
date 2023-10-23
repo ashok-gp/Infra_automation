@@ -9,6 +9,14 @@ terraform {
       version = "~> 5.17"
     }
   }
+
+backend "s3" {
+    bucket         	   = "persol-terraform-tfstate"
+    key              	   = "state/terraform.tfstate"
+    region         	   = "us-west-1"
+    encrypt        	   = true
+    dynamodb_table     = "locktable"
+  }
 }
 
 ## Taking multiple composable building-block modules and assembles them together to produce a larger system know as module composition
